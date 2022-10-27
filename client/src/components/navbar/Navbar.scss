@@ -1,0 +1,20 @@
+nav {
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+    margin-left: 1.58rem;
+  }
+  li {
+    a {
+      color: #000;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    
+    &.active {
+      border-bottom: 3px solid black;
+    }
+  }
+}
