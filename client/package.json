@@ -12,6 +12,8 @@
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@mui/icons-material": "^5.8.3",
     "@mui/material": "^5.8.0",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "deep-equal": "^2.0.5",

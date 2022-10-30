@@ -4,12 +4,18 @@
     "client",
     "server"
   ],
-  "dependencies": {
-    "concurrently": "^7.5.0"
-  },
   "scripts": {
     "client": "yarn workspace client start",
     "server": "yarn workspace server start",
     "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "dependencies": {
+    "concurrently": "^7.5.0"
+  },
+  "devDependencies": {
+    "source-map-loader": "^4.0.1",
+    "ts-loader": "^9.4.1",
+    "ts-migrate": "^0.1.34",
+    "typescript": "^4.8.4"
   }
 }

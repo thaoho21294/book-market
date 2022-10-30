@@ -27,11 +27,14 @@ const Login = () => {
   }, [isLogout])
 
   const handleSubmitException = () => {
+    // @ts-expect-error TS(2345): Argument of type 'false' is not assignable to para... Remove this comment to see the full error message
     setLoading(false)
+    // @ts-expect-error TS(2345): Argument of type '"Invalid username or password"' ... Remove this comment to see the full error message
     setError('Invalid username or password')
   }
 
   const onSubmit = (values) => {
+    // @ts-expect-error TS(2345): Argument of type 'true' is not assignable to param... Remove this comment to see the full error message
     setLoading(true)
     axios
       .post(`${BLOG_API}/users/login`, {
@@ -53,6 +56,7 @@ const Login = () => {
             permission: response.data.permission,
             role: response.data.role,
           })
+          // @ts-expect-error TS(2345): Argument of type 'false' is not assignable to para... Remove this comment to see the full error message
           setLoading(false)
           navigate('/')
         }, 2000)
@@ -87,6 +91,7 @@ const Login = () => {
           color='success'
           error={touched.username && Boolean(formikErrors.username)}
           onChange={handleChange}
+          // @ts-ignore
           helperText={touched.username && formikErrors.username}
         />
         <TextField
@@ -97,6 +102,7 @@ const Login = () => {
           variant='standard'
           color='success'
           error={touched.password && Boolean(formikErrors.password)}
+          // @ts-ignore
           helperText={touched.password && formikErrors.password}
           onChange={handleChange}
         />

@@ -36,11 +36,14 @@ module.exports = () => {
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
           include: resolveApp('src'),
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-            cacheCompression: isProduction,
-          },
+          loader: 'ts-loader',
+        },
+        // addition - add source-map support
+        {
+          enforce: 'pre',
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'source-map-loader',
         },
         {
           test: /\.html$/,
@@ -78,6 +81,7 @@ module.exports = () => {
     },
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     plugins: [
       new webpack.DefinePlugin({
