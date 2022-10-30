@@ -3,8 +3,7 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const usersRouter = require('./routes/users')
-const postRouter = require('./routes/posts')
-console.log(__dirname)
+const bookRouter = require('./routes/books')
 
 require('dotenv').config({ path: '../.env' })
 
@@ -19,7 +18,7 @@ connection.once('open', () => {
 })
 
 app.use('/users', usersRouter)
-app.use('/posts', postRouter)
+app.use('/books', bookRouter)
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => console.log(`Server is running in port ${PORT}`))

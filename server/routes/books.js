@@ -1,47 +1,41 @@
 const router = require('express').Router()
-let Post = require('../models/post.model')
+const Book = require('../models/book.model')
 
 router.route('/').get((req, res) => {
-  Post.find()
+  Book.find()
     .then((blogs) => res.json(blogs))
     .catch((err) => res.status(400).json('Error:' + err))
 })
 
 router.route('/add').post((req, res) => {
-  const username = req.body.username
-  const title = req.body.title
-  const content = req.body.content
+  const newBook = new Book(req.body)
 
-  const newPost = new Post({ username, title, content })
-
-  newPost
+  newBook
     .save()
-    .then(() => res.json('Post added!'))
+    .then(() => res.json('Book added!'))
     .catch((err) => res.status(400).json('Error: ' + err))
 })
 
 router.route('/:id').get((req, res) => {
-  Post.findById(req.params.id)
-    .then((post) => res.json(post))
+  Book.findById(req.params.id)
+    .then((book) => res.json(book))
     .catch((err) => res.status(400).json('Error:' + err))
 })
 
 router.route('/:id').delete((req, res) => {
-  Post.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Post deleted!'))
+  Book.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Book deleted!'))
     .catch((err) => res.status(400).json('Error:' + err))
 })
 
 router.route('/update/:id').post((req, res) => {
-  Post.findById(req.params.id)
-    .then((post) => {
-      post.username = req.body.username
-      post.content = req.body.content
-      post.title = req.body.title
+  Book.findById(req.params.id)
+    .then((book) => {
+      const updatedBook = new Book(Object.assign(book, req.body))
 
-      post
+      updatedBook
         .save()
-        .then(() => res.json('Post updated!'))
+        .then(() => res.json('Book updated!'))
         .catch((err) => res.status(400).json('Error: ' + err))
     })
     .catch((err) => res.status(400).json('Error:' + err))

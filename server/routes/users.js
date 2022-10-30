@@ -14,11 +14,8 @@ router.route('/login').post((req, res) => {
 })
 
 router.route('/add').post((req, res) => {
-  const username = req.body.username
-  const password = req.body.password
-  const role = req.body.role ?? 'guest'
-  const permission = req.body.permission ?? 'read'
-  const newUser = new User({ username, password, role, permission })
+  const { username, password, location, description } = req.body
+  const newUser = new User({ username, password, location, description })
 
   newUser
     .save()
@@ -29,10 +26,8 @@ router.route('/add').post((req, res) => {
 router.route('/update/:id').post((req, res) => {
   User.findById(req.params.id)
     .then((user) => {
-      user.username = req.body.username ?? user.username
-      user.permission = req.body.permission ?? user.permission
-      user.role = req.body.role ?? user.role
-      user
+      const updatedUser = new User(Object.assign(user, req.body))
+      updatedUser
         .save()
         .then(() => res.json('User updated!'))
         .catch((err) => res.status(400).json('Error: ' + err))
