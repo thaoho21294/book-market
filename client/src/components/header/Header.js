@@ -6,7 +6,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 const Header = () => {
   const user = getUser()
   return (
-    <div>
+    <header>
+      <h3 className='brand'>Book Market</h3>
       <div className='menu-bar'>
         {!user ? (
           <a href='/login'>Login</a>
@@ -17,10 +18,7 @@ const Header = () => {
           </>
         )}
       </div>
-      <header>
-        <h1 className='brand'>Thao Ho Blog</h1>
-      </header>
-    </div>
+    </header>
   )
 }
 

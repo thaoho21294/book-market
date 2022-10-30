@@ -5,7 +5,7 @@ import { TextField, Button, Alert } from '@mui/material'
 import { BLOG_API } from '../../constants'
 import { getUser, removeUser, setUser } from '../../contexts'
 import './Login.scss'
-import loginValidationSchema from 'schema/loginValidationSchema'
+import loginValidationSchema from './loginValidationSchema'
 import { useFormik } from 'formik'
 import LoadingSpinner from 'components/loading-spinner'
 

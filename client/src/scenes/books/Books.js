@@ -3,7 +3,7 @@ import React from 'react'
 const Books = () => {
   return (
     <div>
-      <p>This books page</p>
+      <p>List of books here</p>
     </div>
   )
 }

@@ -1,5 +1,4 @@
-import React, { cloneElement } from 'react'
-import { createMemoryHistory } from 'history'
+import React from 'react'
 import { Route, Routes, MemoryRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 
