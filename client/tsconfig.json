@@ -13,6 +13,7 @@
     "baseUrl": "./src", /* Specify the base directory to resolve non-relative module names. */
   },
   "include": [
-    "src"
+    "src",
+    "setupTest.ts"
   ]
 }
