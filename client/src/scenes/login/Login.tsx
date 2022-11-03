@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useMatch, useNavigate } from 'react-router-dom'
 import { TextField, Button, Alert } from '@mui/material'
-import { BLOG_API } from '../../constants'
+import { SERVER_URL } from '../../constants'
 import { getUser, removeUser, setUser } from '../../contexts'
 import './Login.scss'
 import loginValidationSchema from './loginValidationSchema'
@@ -37,7 +37,7 @@ const Login = () => {
     // @ts-expect-error TS(2345): Argument of type 'true' is not assignable to param... Remove this comment to see the full error message
     setLoading(true)
     axios
-      .post(`${BLOG_API}/users/login`, {
+      .post(`${SERVER_URL}/users/login`, {
         username: values.username,
         password: values.password,
       })
