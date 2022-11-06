@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useMatch, useNavigate } from 'react-router-dom'
-import { TextField, Button, Alert } from '@mui/material'
-import { Form } from 'semantic-ui-react'
+import { Form, Message, Button, Icon, Dimmer, Loader } from 'semantic-ui-react'
+import { useFormik } from 'formik'
 
 import { SERVER_URL } from '../../constants'
 import { getUser, removeUser, setUser } from '../../contexts'
-import './Login.scss'
 import loginValidationSchema from './loginValidationSchema'
-import { useFormik } from 'formik'
-import LoadingSpinner from 'components/loading-spinner'
+import './Login.scss'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -82,14 +80,19 @@ const Login = () => {
 
   return (
     <div className='login-container'>
-      {loading && <LoadingSpinner />}
+      <div className='login-title'>
+        <Icon name='book' size='huge' circular color='green'></Icon>
+        <h2>Sign in to Book Market</h2>
+      </div>
+      <Dimmer active={loading}>
+        <Loader />
+      </Dimmer>
       <Form className='login-form' onSubmit={handleSubmit}>
-        {error && <Alert severity='error'>{error}</Alert>}
+        {error && <Message negative>{error}</Message>}
         <Form.Input
           id='username'
           name='username'
           label='Username'
-          color='success'
           error={
             touched.username && Boolean(formikErrors.username)
               ? {
@@ -104,7 +107,6 @@ const Login = () => {
           label='Password'
           name='password'
           type='password'
-          color='success'
           error={
             touched.password && Boolean(formikErrors.password)
               ? {
@@ -115,12 +117,7 @@ const Login = () => {
           }
           onChange={handleChange}
         />
-        <Button
-          type='submit'
-          variant='contained'
-          className='form__custom-button'
-          color='success'
-        >
+        <Button type='submit' className='form__custom-button' color='green'>
           Log in
         </Button>
       </Form>

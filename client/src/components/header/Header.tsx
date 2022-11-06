@@ -1,7 +1,7 @@
 import { getUser } from 'contexts'
 import React from 'react'
+import { Icon } from 'semantic-ui-react'
 import './Header.scss'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
 const Header = () => {
   const user = getUser()
@@ -13,7 +13,7 @@ const Header = () => {
           <a href='/login'>Login</a>
         ) : (
           <>
-            <AccountCircleIcon className='icon' fontSize='large' />
+            <Icon name='user circle' size='big' />
             {user.username} | <a href='/logout'> Logout</a>
           </>
         )}

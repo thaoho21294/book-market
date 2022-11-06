@@ -1,7 +1,12 @@
 .login-container {
   height: 100vh;
-  background: #637d63;
+  background: #d2f1d9;
   padding: 30px;
+
+  .login-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 }
 
 .form.login-form {
@@ -11,6 +16,7 @@
   flex-direction: column;
   background: white;
   padding: 20px;
+  border-radius: 4px;
 
   &.form__custom-button {
     margin-top: 50px;
