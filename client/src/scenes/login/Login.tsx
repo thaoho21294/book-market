@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useMatch, useNavigate } from 'react-router-dom'
 import { TextField, Button, Alert } from '@mui/material'
+import { Form } from 'semantic-ui-react'
+
 import { SERVER_URL } from '../../constants'
 import { getUser, removeUser, setUser } from '../../contexts'
 import './Login.scss'
@@ -81,29 +83,36 @@ const Login = () => {
   return (
     <div className='login-container'>
       {loading && <LoadingSpinner />}
-      <form className='login-form' onSubmit={handleSubmit}>
+      <Form className='login-form' onSubmit={handleSubmit}>
         {error && <Alert severity='error'>{error}</Alert>}
-        <TextField
+        <Form.Input
           id='username'
           name='username'
           label='Username'
-          variant='standard'
           color='success'
-          error={touched.username && Boolean(formikErrors.username)}
+          error={
+            touched.username && Boolean(formikErrors.username)
+              ? {
+                  content: formikErrors.username,
+                }
+              : null
+          }
           onChange={handleChange}
-          // @ts-ignore
-          helperText={touched.username && formikErrors.username}
         />
-        <TextField
+        <Form.Input
           id='password'
           label='Password'
           name='password'
           type='password'
-          variant='standard'
           color='success'
-          error={touched.password && Boolean(formikErrors.password)}
-          // @ts-ignore
-          helperText={touched.password && formikErrors.password}
+          error={
+            touched.password && Boolean(formikErrors.password)
+              ? {
+                  content: formikErrors.password,
+                  pointing: 'below',
+                }
+              : null
+          }
           onChange={handleChange}
         />
         <Button
@@ -114,7 +123,7 @@ const Login = () => {
         >
           Log in
         </Button>
-      </form>
+      </Form>
     </div>
   )
 }

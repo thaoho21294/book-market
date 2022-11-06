@@ -63,17 +63,22 @@ module.exports = () => {
           ],
         },
         {
-          test: /\.css$/,
-          use: [
-            isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-            'css-loader',
-          ],
-        },
-        {
           test: /\.(gif|png|jpe?g|svg)$/i,
           use: [
             {
               loader: 'file-loader',
+            },
+          ],
+        },
+        {
+          // Only for fonts
+          test: /\.(woff|woff2|ttf|otf|eot|svg)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: 'fonts/[name].[ext]',
+              },
             },
           ],
         },
