@@ -1,8 +1,7 @@
-import React from 'react'
-
+import './Books.scss'
 const Books = () => {
   return (
-    <div>
+    <div className="books">
       <p>List of books here</p>
     </div>
   )

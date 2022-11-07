@@ -1,5 +1,4 @@
 import { getUser } from 'contexts'
-import React from 'react'
 import { Icon } from 'semantic-ui-react'
 import './Header.scss'
 
