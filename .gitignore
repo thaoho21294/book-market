@@ -3,3 +3,4 @@ client/node_modules
 server/node_modules
 .DS_Store
 client/.DS_Store
+client/.yarn-error.log

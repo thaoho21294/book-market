@@ -1,7 +1,8 @@
 import './Books.scss'
+
 const Books = () => {
   return (
-    <div className="books">
+    <div className='books'>
       <p>List of books here</p>
     </div>
   )
