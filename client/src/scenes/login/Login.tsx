@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useMatch, useNavigate } from 'react-router-dom'
-import { Form, Message, Button, Icon, Dimmer, Loader } from 'semantic-ui-react'
-import { useFormik } from 'formik'
+import { Message, Button, Icon, Dimmer, Loader } from 'semantic-ui-react'
+import { FormikProvider, useFormik } from 'formik'
 
 import { SERVER_URL } from '../../constants'
 import { getUser, removeUser, setUser } from '../../contexts'
 import loginValidationSchema from './loginValidationSchema'
 import './Login.scss'
+import Input from 'components/input/input'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -76,8 +77,6 @@ const Login = () => {
     onSubmit,
   })
 
-  const { handleSubmit, handleChange, touched, errors: formikErrors } = formik
-
   return (
     <div className='login-container'>
       <div className='login-title'>
@@ -87,40 +86,27 @@ const Login = () => {
       <Dimmer active={loading}>
         <Loader />
       </Dimmer>
-      <Form className='login-form' onSubmit={handleSubmit}>
-        {error && <Message negative>{error}</Message>}
-        <Form.Input
-          id='username'
-          name='username'
-          label='Username'
-          error={
-            touched.username && Boolean(formikErrors.username)
-              ? {
-                  content: formikErrors.username,
-                }
-              : null
-          }
-          onChange={handleChange}
-        />
-        <Form.Input
-          id='password'
-          label='Password'
-          name='password'
-          type='password'
-          error={
-            touched.password && Boolean(formikErrors.password)
-              ? {
-                  content: formikErrors.password,
-                  pointing: 'below',
-                }
-              : null
-          }
-          onChange={handleChange}
-        />
-        <Button type='submit' className='form__custom-button' color='green'>
-          Log in
-        </Button>
-      </Form>
+      <FormikProvider value={formik}>
+        <div className='login-form'>
+          {error && <Message negative>{error}</Message>}
+          <Input id='username' name='username' label='Username' />
+          <Input
+            id='password'
+            label='Password'
+            name='password'
+            type='password'
+          />
+          <Button
+            className='form__custom-button'
+            onClick={() => {
+              formik.handleSubmit
+            }}
+            color='green'
+          >
+            Log in
+          </Button>
+        </div>
+      </FormikProvider>
     </div>
   )
 }
