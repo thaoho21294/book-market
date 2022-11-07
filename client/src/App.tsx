@@ -1,5 +1,4 @@
 import Login from 'scenes/login'
-import Home from 'scenes/home'
 import './App.scss'
 import {
   createBrowserRouter,
