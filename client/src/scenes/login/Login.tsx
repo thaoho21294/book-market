@@ -99,7 +99,7 @@ const Login = () => {
           <Button
             className='form__custom-button'
             onClick={() => {
-              formik.handleSubmit
+              formik.handleSubmit()
             }}
             color='green'
           >
