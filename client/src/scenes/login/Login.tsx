@@ -6,9 +6,9 @@ import { FormikProvider, useFormik } from 'formik'
 
 import { SERVER_URL } from '../../constants'
 import { getUser, removeUser, setUser } from '../../contexts'
-import loginValidationSchema from './loginValidationSchema'
 import './Login.scss'
-import Input from 'components/input/input'
+import FormInput from 'components/form-input'
+import { loginValidationSchema } from 'schema/validationSchema'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -89,8 +89,12 @@ const Login = () => {
       <FormikProvider value={formik}>
         <div className='login-form'>
           {error && <Message negative>{error}</Message>}
-          <Input id='username' name='username' label='Username' />
-          <Input
+          <FormInput
+            id='username'
+            name='username'
+            label='Username'
+          />
+          <FormInput
             id='password'
             label='Password'
             name='password'
