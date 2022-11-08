@@ -13,8 +13,8 @@ import { loginValidationSchema } from 'schema/validationSchema'
 const Login = () => {
   const navigate = useNavigate()
   const isLogout = useMatch('/logout')
-  const [error, setError] = useState()
-  const [loading, setLoading] = useState()
+  const [error, setError] = useState<string | null>()
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (isLogout) {
@@ -28,14 +28,11 @@ const Login = () => {
   }, [isLogout])
 
   const handleSubmitException = () => {
-    // @ts-expect-error TS(2345): Argument of type 'false' is not assignable to para... Remove this comment to see the full error message
     setLoading(false)
-    // @ts-expect-error TS(2345): Argument of type '"Invalid username or password"' ... Remove this comment to see the full error message
     setError('Invalid username or password')
   }
 
   const onSubmit = (values) => {
-    // @ts-expect-error TS(2345): Argument of type 'true' is not assignable to param... Remove this comment to see the full error message
     setLoading(true)
     axios
       .post(`${SERVER_URL}/users/login`, {
@@ -57,7 +54,6 @@ const Login = () => {
             permission: response.data.permission,
             role: response.data.role,
           })
-          // @ts-expect-error TS(2345): Argument of type 'false' is not assignable to para... Remove this comment to see the full error message
           setLoading(false)
           navigate('/')
         }, 2000)
@@ -89,12 +85,13 @@ const Login = () => {
       <FormikProvider value={formik}>
         <Form className='login-form'>
           {error && <Message negative>{error}</Message>}
-          <FormInput id='username' name='username' label='Username' />
+          <FormInput id='username' name='username' required label='Username' />
           <FormInput
             id='password'
             label='Password'
             name='password'
             type='password'
+            required
           />
           <Button
             onClick={() => {

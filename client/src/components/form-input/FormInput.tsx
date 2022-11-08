@@ -1,30 +1,20 @@
 import { useField } from 'formik'
-import { Form, Label } from 'semantic-ui-react'
+import { Form, FormInputProps } from 'semantic-ui-react'
 import { getFieldMetaError } from 'utils/formikHelpers'
 
-interface Props extends React.ComponentPropsWithoutRef<'input'> {
+interface Props extends FormInputProps {
   label?: string
   className?: string
   name: string
 }
-const FormInput = ({
-  id,
-  name,
-  label,
-  className,
-  type,
-  onChange,
-  onBlur,
-  value,
-}: Props) => {
+
+const FormInput = ({ name, label, className, ...otherProps }: Props) => {
   const [field, meta] = useField({ name })
   const errorMessage = getFieldMetaError(meta)
   return (
     <Form.Input
-      id={id}
       className={className}
       label={label}
-      type={type}
       error={
         errorMessage != null
           ? {
@@ -32,13 +22,8 @@ const FormInput = ({
             }
           : null
       }
-      onChange={(e) => {
-        onChange?.(e) ?? field.onChange(e)
-      }}
-      onBlur={(e) => {
-        onBlur?.(e) ?? field.onBlur(e)
-      }}
-      value={value ?? field.value}
+      {...field}
+      {...otherProps}
     />
   )
 }
