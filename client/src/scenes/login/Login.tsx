@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useMatch, useNavigate } from 'react-router-dom'
-import { Message, Button, Icon, Dimmer, Loader } from 'semantic-ui-react'
+import { Message, Button, Icon, Dimmer, Loader, Form } from 'semantic-ui-react'
 import { FormikProvider, useFormik } from 'formik'
 
 import { SERVER_URL } from '../../constants'
@@ -87,13 +87,9 @@ const Login = () => {
         <Loader />
       </Dimmer>
       <FormikProvider value={formik}>
-        <div className='login-form'>
+        <Form className='login-form'>
           {error && <Message negative>{error}</Message>}
-          <FormInput
-            id='username'
-            name='username'
-            label='Username'
-          />
+          <FormInput id='username' name='username' label='Username' />
           <FormInput
             id='password'
             label='Password'
@@ -101,7 +97,6 @@ const Login = () => {
             type='password'
           />
           <Button
-            className='form__custom-button'
             onClick={() => {
               formik.handleSubmit()
             }}
@@ -109,7 +104,7 @@ const Login = () => {
           >
             Log in
           </Button>
-        </div>
+        </Form>
       </FormikProvider>
     </div>
   )
