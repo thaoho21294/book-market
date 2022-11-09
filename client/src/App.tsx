@@ -6,7 +6,7 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom'
-import Root from 'components/layouts/RootLayout'
+import RootLayout from 'components/layouts/RootLayout'
 import Books from 'scenes/books'
 import About from 'scenes/about'
 import PageNotFound from 'components/page-not-found/PageNotFound'
@@ -14,7 +14,7 @@ import PageNotFound from 'components/page-not-found/PageNotFound'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path='/' element={<Root />}>
+      <Route path='/' element={<RootLayout />}>
         <Route index element={<Books />} />
         <Route path='books' element={<Books />} />
         <Route path='about' element={<About />} />
