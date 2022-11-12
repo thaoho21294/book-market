@@ -12,6 +12,7 @@ import About from 'scenes/about'
 import PageNotFound from 'components/page-not-found/PageNotFound'
 
 const router = createBrowserRouter(
+  let ;
   createRoutesFromElements(
     <Route>
       <Route path='/' element={<RootLayout />}>
