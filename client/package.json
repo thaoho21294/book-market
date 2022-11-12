@@ -57,7 +57,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve",
     "build": "cross-env NODE_ENV=development webpack",
-    "build:prod": "NODE_ENV=production webpack",
+    "build:prod": "yarn test:coverage NODE_ENV=production webpack",
     "test": "jest --watch"
   },
   "browserslist": {
