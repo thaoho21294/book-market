@@ -79,7 +79,7 @@
     ],
     "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
-      "<rootDir>/setupTests.js"
+      "<rootDir>/setupTests.ts"
     ],
     "moduleNameMapper": {
       "\\.(css|less|scss|sass|png|jpg)$": "identity-obj-proxy"
