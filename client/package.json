@@ -57,7 +57,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve",
     "build": "cross-env NODE_ENV=development webpack",
-    "build:prod": "jest && NODE_ENV=production webpack",
+    "build:prod": "yarn lint && jest && NODE_ENV=production webpack",
+    "lint": "yarn eslint --quiet src/**/*.ts{,x}",
     "test": "jest --watch"
   },
   "browserslist": {
