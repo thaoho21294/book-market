@@ -23,7 +23,7 @@
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.14.5",
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^11.1.0",
+    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^12.1.10",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
@@ -46,8 +46,8 @@
     "mini-css-extract-plugin": "^2.0.0",
     "react-hot-loader": "^4.13.0",
     "sass-loader": "^12.1.0",
-    "style-loader": "^3.0.0",
     "source-map-loader": "^4.0.1",
+    "style-loader": "^3.0.0",
     "ts-loader": "^9.4.1",
     "typescript": "^4.8.4",
     "webpack": "^5.38.1",
@@ -57,7 +57,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve",
     "build": "cross-env NODE_ENV=development webpack",
-    "build:prod": "NODE_ENV=production webpack",
+    "build:prod": "yarn lint && jest && NODE_ENV=production webpack",
+    "lint": "yarn eslint --quiet src/**/*.ts{,x}",
     "test": "jest --watch"
   },
   "browserslist": {
@@ -79,7 +80,7 @@
     ],
     "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
-      "<rootDir>/setupTests.js"
+      "<rootDir>/setupTests.ts"
     ],
     "moduleNameMapper": {
       "\\.(css|less|scss|sass|png|jpg)$": "identity-obj-proxy"
