@@ -1,0 +1,87 @@
+$buttonBgColor: #078E45;
+$pageBgColor: #D2F1D9;
+$formBgColor: #fff;
+
+.form-container {
+    background-color: $pageBgColor;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+}
+
+#form-register {
+    background-color: $formBgColor;
+    display: block;
+    margin: 0 auto;
+    border-radius: 0.2rem;
+    width: 42rem;
+    padding: 3rem 5rem 4rem 5rem;
+//     .grouped.fields {
+//         span {
+//             margin-left: 13rem;
+//             display: block;
+//             @media screen and (max-width: 640px) {
+//                 margin-left: 0;
+//             }
+//         }
+//     }
+//     .field {
+//         position: relative;
+//         margin-left: 13rem;
+//         @media screen and (max-width: 640px) {
+//             margin-left: 0;
+//             display: block;
+//             margin: 0 auto;
+//         }
+
+//         label {
+//             @media screen and (max-width: 640px) {
+//                 position: unset;
+//                 top: unset;
+//                 left: unset;
+//                 bottom: unset;
+//                 text-align: left;
+//                 display: block;
+//             }
+//             display: flex;
+//             justify-content: end;
+//             align-items: center;
+//             position: absolute;
+//             left: -12rem;
+//             top: 0;
+//             bottom: 0;
+//             text-align: right;
+//             // display: block;
+//             width: 10rem;
+//         }
+        .ui.button{
+            background-color: $buttonBgColor;
+            color: #fff;
+            width: 100%;
+            padding: 1.2rem;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .btn-submit {
+            margin-top: 3rem;
+        }
+    
+//         .ui.input, .ui.selection.dropdown {
+//             width: 80%
+//         }
+//     }
+
+//     .form-header {
+//         font-size: 2.4rem;
+//         margin-bottom: 3rem;
+//     }
+//     // .form-body {
+//     //     padding: 4rem;
+//     // }
+}
