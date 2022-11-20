@@ -1,0 +1,19 @@
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  line-height: 17px;
+
+  img {
+    margin-bottom: 14px;
+  }
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  span {
+    color: #fa0808;
+  }
+}
