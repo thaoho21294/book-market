@@ -9,6 +9,7 @@ const bookSchema = new Schema(
     images: { type: Array, required: true },
     desription: { type: String, required: false },
     username: { type: String, required: true },
+    district: { type: String, required: true },
   },
   {
     timestamps: true,

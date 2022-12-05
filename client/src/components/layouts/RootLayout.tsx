@@ -8,7 +8,13 @@ const RootLayout = () => {
       <div id='container'>
         <Outlet />
       </div>
-      <footer>This is footer</footer>
+      <footer
+        style={{
+          position: 'relative',
+        }}
+      >
+        This is footer
+      </footer>
     </>
   )
 }
