@@ -1,4 +1,3 @@
-import { screen } from '@testing-library/react'
 import BookService from '../../services/books.service'
 import axios, { AxiosResponse } from 'axios'
 jest.mock('axios')
@@ -23,22 +22,11 @@ const mockBookListResponse = {
     },
   ],
 } as AxiosResponse
-describe('Component should render correctly', () => {
-  test('should fetch book list correctly', async () => {
+describe('Books Component should render correctly', () => {
+  test('Should display books that are fetched from the server', async () => {
     mockedAxios.mockResolvedValue(mockBookListResponse)
     const res = await BookService.getBooks()
     expect(axios).toHaveBeenCalledTimes(1)
     expect(res).toEqual(mockBookListResponse)
-  })
-  test('should not render more product button if have no more than 30 products and vice versa', async () => {
-    const MoreProductBtn = screen.queryByTestId('show-more-btn')
-    mockedAxios.mockResolvedValue(mockBookListResponse)
-    const res = await BookService.getBooks()
-    expect(axios).toHaveBeenCalledTimes(2)
-    if (res.data.length <= 30) {
-      expect(MoreProductBtn).not.toBeInTheDocument()
-    } else {
-      expect(MoreProductBtn).toBeInTheDocument()
-    }
   })
 })
